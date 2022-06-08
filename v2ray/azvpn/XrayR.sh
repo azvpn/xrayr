@@ -8,7 +8,7 @@ plain='\033[0m'
 version="v1.0.0"
 
 # check root
-[[ $EUID -ne 0 ]] && bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/checkroot.sh) && exit 1
+[[ $EUID -ne 0 ]] && bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/checkroot.sh) && exit 1
 
 # check os
 if [[ -f /etc/redhat-release ]]; then
@@ -41,15 +41,15 @@ fi
 
 if [[ x"${release}" == x"centos" ]]; then
     if [[ ${os_version} -le 6 ]]; then
-        bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/checkcentos.sh) && exit 1
+        bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/checkcentos.sh) && exit 1
     fi
 elif [[ x"${release}" == x"ubuntu" ]]; then
     if [[ ${os_version} -lt 16 ]]; then
-        bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/checkubuntu.sh) && exit 1
+        bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/checkubuntu.sh) && exit 1
     fi
 elif [[ x"${release}" == x"debian" ]]; then
     if [[ ${os_version} -lt 8 ]]; then
-        bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/checkdebian.sh) && exit 1
+        bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/checkdebian.sh) && exit 1
     fi
 fi
 
@@ -70,7 +70,7 @@ confirm() {
 }
 
 confirm_restart() {
-    bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/logo.sh)
+    bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/logo.sh)
     confirm "  Bạn Có Muốn Khởi Động Lại XrayR Không ?" "y"
     if [[ $? == 0 ]]; then
         restart
@@ -80,7 +80,7 @@ confirm_restart() {
 }
 
 before_show_menu() {
-bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/logo.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/logo.sh)
     echo && echo -n -e "  Nhấn Enter Để Quay Lại Menu Chính: ${plain}" && read temp
     show_menu
 }
@@ -98,7 +98,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/logo.sh)
 }
 
 update() {
-bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/logo.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/logo.sh)
     if [[ $# == 0 ]]; then
         echo && echo -n -e "  Nhập Phiên Bản Được Chỉ Định ( Mặc Định Phiên Bản Mới Nhất ): " && read version
     else
@@ -112,9 +112,9 @@ bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/logo.sh)
 #        fi
 #        return 0
 #    fi
-    bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/xrayr/main/v2ray/speed4g/install.sh) $version
+    bash <(curl -Ls https://raw.githubusercontent.com/azvpn/xrayr/main/v2ray/azvpn/install.sh) $version
     if [[ $? == 0 ]]; then
-        bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/updatesuccess.sh)
+        bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/updatesuccess.sh)
         exit
     fi
 
@@ -133,7 +133,7 @@ config() {
             echo -e "  Trạng Thái XrayR: Đang Hoạt Động ${plain}"
             ;;
         1)
-            echo -e "  ADMIN SPEED4G.XYZ Phát Hiện Bạn Không Khởi Động XrayR Hoặc XrayR Không Tự Khởi Động Lại, Bạn Có Muốn Kiểm Tra Không ? [Y/n]" && echo
+            echo -e "  ADMIN AZVPN.ME Phát Hiện Bạn Không Khởi Động XrayR Hoặc XrayR Không Tự Khởi Động Lại, Bạn Có Muốn Kiểm Tra Không ? [Y/n]" && echo
             read -e -p "(mặc định: y):" yn
             [[ -z ${yn} ]] && yn="y"
             if [[ ${yn} == [Yy] ]]; then
@@ -146,7 +146,7 @@ config() {
 }
 
 uninstall() {
-bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/logo.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/logo.sh)
     confirm "  Bạn Có Chắc Chắn Muốn Gỡ Cài Đặt XrayR Không ?" " n"
     if [[ $? != 0 ]]; then
         if [[ $# == 0 ]]; then
@@ -163,7 +163,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/logo.sh)
     rm /usr/local/XrayR/ -rf
 
     echo ""
-    bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/uninstall.sh)
+    bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/uninstall.sh)
     echo ""
 
     if [[ $# == 0 ]]; then
@@ -174,15 +174,15 @@ bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/logo.sh)
 start() {
     check_status
     if [[ $? == 0 ]]; then
-        bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/startonline.sh)
+        bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/startonline.sh)
     else
         systemctl start XrayR
         sleep 2
         check_status
         if [[ $? == 0 ]]; then
-            bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/startsuccess.sh)
+            bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/startsuccess.sh)
         else
-            bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/startfailed.sh)
+            bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/startfailed.sh)
         fi
     fi
 
@@ -196,9 +196,9 @@ stop() {
     sleep 2
     check_status
     if [[ $? == 1 ]]; then
-        bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/stopsucces.sh)
+        bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/stopsucces.sh)
     else
-        bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/stopfailed.sh)
+        bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/stopfailed.sh)
     fi
 
     if [[ $# == 0 ]]; then
@@ -211,9 +211,9 @@ restart() {
     sleep 2
     check_status
     if [[ $? == 0 ]]; then
-        bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/restartsuccess.sh)
+        bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/restartsuccess.sh)
     else
-        bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/restartfailed.sh)
+        bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/restartfailed.sh)
     fi
     if [[ $# == 0 ]]; then
         before_show_menu
@@ -261,7 +261,7 @@ show_log() {
 }
 
 install_bbr() {
-    bash <(curl -L -s https://raw.githubusercontent.com/Nghi235/xrayr/main/v2ray/speed4g/tcp.sh)
+    bash <(curl -L -s https://raw.githubusercontent.com/azvpn/xrayr/main/v2ray/azvpn/tcp.sh)
     #if [[ $? == 0 ]]; then
     #    echo ""
     #    echo -e "${green}安装 bbr 成功，请重启服务器${plain}"
@@ -274,7 +274,7 @@ install_bbr() {
 }
 
 update_shell() {
-    wget -O /usr/bin/XrayR -N --no-check-certificate https://raw.githubusercontent.com/Nghi235/xrayr/main/v2ray/speed4g/XrayR.sh
+    wget -O /usr/bin/XrayR -N --no-check-certificate https://raw.githubusercontent.com/azvpn/xrayr/main/v2ray/azvpn/XrayR.sh
     if [[ $? != 0 ]]; then
         echo ""
         echo -e "  Không Tải Được Script Xuống, Vui Lòng Kiểm Tra Xem Máy Chủ Có Thể Kết Nối Với Github Không${plain}"
@@ -370,11 +370,11 @@ show_XrayR_version() {
 }
 
 show_usage() {
-bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/logo.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/logo.sh)
     echo ''
-    echo "------------[Nguyễn Nghị]------------"
-    echo "---------[ADMIN SPEED4G.XYZ]---------"
-    echo "  Cách sử dụng tập lệnh quản lý XrayR: "
+    echo "------------[Nguyễn Mạnh Long]------------"
+    echo "-------------[ADMIN AZVPN.ME]-------------"
+    echo "    Cách sử dụng tập lệnh quản lý XrayR: "
     echo "------------------------------------------"
     echo "  XrayR                      - Hiển Thị Menu Quản Trị"
     echo "  XrayR start                - Khởi Động XrayR "
@@ -394,10 +394,10 @@ bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/logo.sh)
 }
 
 show_menu() {
-bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/logo.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/logo.sh)
     echo -e "
     Các Tập Lệnh Quản Lý Phụ Trợ XrayR，Không Hoạt Động Với Docker${plain}
-    ${green}--- [Nguyễn Nghị] ---${plain}
+    ${green}--- [Nguyễn Mạnh Long] ---${plain}
 ————————————————————————————————
     0. Thay Đổi Cài Đặt
 ————————————————————————————————
