@@ -26,7 +26,7 @@ elif cat /proc/version | grep -Eqi "ubuntu"; then
 elif cat /proc/version | grep -Eqi "centos|red hat|redhat"; then
     release="centos"
 else
-    bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/checkos.sh) && exit 1
+    bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/checkos.sh) && exit 1
 fi
 
 os_version=""
@@ -86,8 +86,8 @@ bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/logo.sh)
 }
 
 install() {
-bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/status/main/logo.sh)
-    bash <(curl -Ls https://raw.githubusercontent.com/Nghi235/xrayr/main/v2ray/speed4g/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/azvpn/status/main/logo.sh)
+    bash <(curl -Ls https://raw.githubusercontent.com/azvpn/xrayr/main/v2ray/azvpn/install.sh)
     if [[ $? == 0 ]]; then
         if [[ $# == 0 ]]; then
             start
